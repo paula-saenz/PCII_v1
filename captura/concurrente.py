@@ -1,11 +1,12 @@
 import requests
 import datetime
 from concurrent.futures import ThreadPoolExecutor
-from Modelos.Jugador import Jugador
+from datos.Jugador import Jugador
 
 
 #captura de datos a mister
 #capa servicios, coger datos de la bbdd
+#esta no hace falta separarl, tiene que tener un main que la llame 
 def process_player(i, token):
     # Obtenemos los datos extra de mister
     payload = {

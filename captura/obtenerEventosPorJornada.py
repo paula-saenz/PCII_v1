@@ -1,6 +1,6 @@
 import requests
 
-#captura
+#captura y meterlas en sus propais clase 
 def obtener_eventos(url, headers):
     # Hacer un get a la URL con los encabezados personalizados
     response = requests.get(url, headers=headers)
