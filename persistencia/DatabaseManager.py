@@ -42,33 +42,3 @@ class DatabaseManager:
             cursor.close()
             connection.close()
 
-
-    def select_jugadores_by_nationality(self, nationality):
-        try:
-            connection = mysql.connector.connect(
-                host=self.host,
-                user=self.user,
-                password=self.password,
-                database=self.database
-            )
-            cursor = connection.cursor()
-
-            # Consulta SELECT para obtener jugadores por nacionalidad
-            query = "SELECT * FROM jugadores WHERE nationality = %s"
-            cursor.execute(query, (nationality,))
-
-            # Obtener los resultados de la consulta
-            jugadores = cursor.fetchall()
-
-            # Devolver los jugadores encontrados
-            return jugadores
-
-        except mysql.connector.Error as error:
-            print("Error al ejecutar la consulta:", error)
-            return None
-
-        finally:
-            if connection.is_connected():
-                cursor.close()
-                connection.close()
-
