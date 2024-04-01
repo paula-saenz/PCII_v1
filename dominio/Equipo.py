@@ -1,5 +1,5 @@
 class Equipos:
-    def __init__(self, id, id_as, id_biwenger, id_competition, teamLogoUrl, name, updated):
+    def __init__(self, id, id_as, id_biwenger, id_competition, teamLogoUrl, name, updated, id_sofa):
         self.id = id
         self.id_as = id_as
         self.id_biwenger = id_biwenger
@@ -7,5 +7,6 @@ class Equipos:
         self.teamLogoUrl = teamLogoUrl
         self.name = name
         self.updated = updated
+        self.id_sofascore = id_sofa
         
         

@@ -33,7 +33,20 @@ def obtenerequipo(i, token):
        
 
         response = requests.get(url, headers=headers)
-
+        
+        #obtenemos los datos extra de sofascore
+        
+        url = f'https://api.sofascore.com/api/v1/event/{team["id_sofa"]}'
+        response = requests.get(url, headers=headers)
+        event = response['event']
+        homeTeam = event['homeTeam']
+        teamColors = homeTeam['teamColors']
+        primaryColor = teamColors['primary']
+        secondaryColor = teamColors['secondary']
+        venue = homeTeam['venue']
+        
+        
+        
        
 
         equipo = Equipos(
@@ -44,6 +57,7 @@ def obtenerequipo(i, token):
             teamLogoUrl=team['teamLogoUrl'],
             name=team['name'],
             updated=team['updated'],
+            id_sofascore=team['id_sofa']
           
         )
         

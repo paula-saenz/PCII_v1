@@ -41,4 +41,32 @@ class DatabaseManager:
         finally:
             cursor.close()
             connection.close()
+            
+        
+    def insert_equipo(self, equipo_data):
+        try:
+            connection = mysql.connect(
+                host=self.host,
+                user=self.user,
+                password=self.password,
+                database=self.database
+            )
+            cursor = connection.cursor()
+
+            insert_query = """
+                INSERT INTO Equipos
+                (id, id_as, id_biwenger, id_competition, teamLogoUrl, name, updated)
+                VALUES
+                (%(id)s, %(id_as)s, %(id_biwenger)s, %(id_competition)s, %(teamLogoUrl)s, %(name)s, %(updated)s)
+            """
+
+            cursor.execute(insert_query, equipo_data)
+            connection.commit()
+        except Exception as e:
+            print(f"Error al insertar en la base de datos: {e}")
+            connection.rollback()
+        finally:
+            cursor.close()
+            connection.close()
+            
 
